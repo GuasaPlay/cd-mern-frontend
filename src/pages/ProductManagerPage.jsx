@@ -1,5 +1,6 @@
 import { Button } from "components/Button";
 import { PageTitle } from "components/PageTitle";
+import { ProductList } from "components/ProductList";
 import { useNavigate } from "react-router-dom";
 
 export const ProductManagerPage = () => {
@@ -14,7 +15,7 @@ export const ProductManagerPage = () => {
         />
       </div>
       {/* Product list */}
-      <section></section>
+      <ProductList />
     </div>
   );
 };
