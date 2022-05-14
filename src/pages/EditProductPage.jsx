@@ -29,7 +29,7 @@ export const EditProductPage = () => {
               ...initialValuesProduct,
               ...product,
             }}
-            action="edit"
+            action="update"
           />
         )}
       </section>
