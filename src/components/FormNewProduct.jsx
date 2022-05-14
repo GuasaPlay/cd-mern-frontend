@@ -3,28 +3,35 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FormSchemaProduct, initialValuesProduct } from "schemas/product";
+import { FormSchemaProduct } from "schemas/product";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { Label } from "./Label";
 
-export const FormNewProduct = () => {
+export const FormNewProduct = ({ initialValues, action }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
     try {
-      await axios.post("/product/create-product", values);
-      navigate("/administrador-de-productos");
+      if (action === "save") {
+        await axios.post("/product/create-product", values);
+        navigate("/administrador-de-productos");
+      } else {
+        await axios.put("/product/update-product", values, {
+          params: { productId: initialValues._id },
+        });
+        navigate("/administrador-de-productos");
+      }
     } catch (error) {
-      setError("Error al crear el producto, intente nuevamente");
+      setError("Error, intente nuevamente");
       console.log(error);
     }
   };
 
   return (
     <Formik
-      initialValues={initialValuesProduct}
+      initialValues={initialValues}
       validationSchema={FormSchemaProduct}
       onSubmit={handleSubmit}
     >

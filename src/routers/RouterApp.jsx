@@ -1,4 +1,5 @@
 import { DefaultLayout } from "layouts/DefaultLayout";
+import { EditProductPage } from "pages/EditProductPage";
 import { MainPage } from "pages/MainPage";
 import { NewProductPage } from "pages/NewProductPage";
 import { ProductManagerPage } from "pages/ProductManagerPage";
@@ -18,6 +19,10 @@ export const RouterApp = () => {
           <Route
             path="administrador-de-productos/:id"
             element={<ProductPage />}
+          />
+          <Route
+            path="administrador-de-productos/:id/edit"
+            element={<EditProductPage />}
           />
           <Route path="nuevo-producto" element={<NewProductPage />} />
         </Route>
