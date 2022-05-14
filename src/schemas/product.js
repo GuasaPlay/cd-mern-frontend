@@ -6,7 +6,6 @@ export const initialValuesProduct = {
   price: "",
 };
 
-// Validate schema for quiz array
 export const FormSchemaProduct = Yup.object().shape({
   title: Yup.string().required("El titulo es obligatorio"),
   price: Yup.string().required("El precio es obligatorio"),
